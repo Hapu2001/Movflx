@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.navbar::after {
+    content:"";
+    position: absolute;
+    background: url(./assets//home/header_bottom_shape.png);
+    left: 0;
+    right: 0;
+    height: 20px;
+    bottom: -20px;
+    width: 1499px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header_popular::after{
+    content: "";
+    background: url(./assets/home/title_shape.png);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 98px;
+    height: 7px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pre::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 26px;
+    background: #292b37;
+    box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@layer components {
+    .btn {
+     @apply  bg-black-color rounded-full px-9 py-4 border-blue-darken border-2 font-bold text-[12px] cursor-pointer
+    }
+    .card-container :hover .card-img{
+        @apply opacity-30
+    }
+    .card-container :hover  .card-details{
+        @apply  opacity-100 
+        
+    }
+    .card-container :hover .card-btn{
+        @apply opacity-100 -translate-y-0
+    }
+     
 }
