@@ -9,10 +9,10 @@ import Tvshow from './pages/Tvshow';
 function App() {
   return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="movies" element={<Movie />} />
-            <Route path="search" element={<Search />} />
-            <Route path="tvshow" element={<Tvshow />} />
+            <Route path="/Movflx" exact component={<Home />} />
+            <Route path="/Movflx/movies" exact component={<Movie />} />
+            <Route path="/Movflx/search" exact component={<Search />} />
+            <Route path="/Movflx/tvshow" exact component={<Tvshow />} />
         </Routes>
   );
 }
