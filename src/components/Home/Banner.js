@@ -16,7 +16,7 @@ export default function Banner() {
     },[])
    
   return (
-    <div className={'bg-banner bg-cover py-32 text-white'}>
+    <div className={'bg-banner bg-cover py-32 text-white z-10'}>
         <div className={'px-4 mx-20 relative'}>
             <div className={'flex relative items-center'}>   
                 <div   className={'basis-1/2 '}>

@@ -5,10 +5,11 @@ import Popular from '../components/Home/Popular'
 
 export default function Home() {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Navbar />
       <Banner />
       <Popular />
+      
     </div>
   )
 }

@@ -12,6 +12,7 @@
     width: 1499px;
     margin: 0 auto;
     background-repeat: no-repeat;
+    @apply 2xl:hidden
 }
 .header_popular::after{
     content: "";
@@ -34,6 +35,19 @@
     background: #292b37;
     box-sizing: border-box;
 }
+.test {
+    transition: max-height 1.5s;
+}
+.test2 {
+    transition: max-height 0.5s;
+}
+
+  
+.tabBar{
+    
+
+}
+
 @layer components {
     .btn {
      @apply  bg-black-color rounded-full px-9 py-4 border-blue-darken border-2 font-bold text-[12px] cursor-pointer
