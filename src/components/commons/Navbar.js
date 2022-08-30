@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import logo from '../../assets/home/logo.png'
 import header_bottom from '../../assets/home/header_bottom_shape.png'
 import { faSearch,faBars, faAngleDown,faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -13,24 +13,30 @@ export default function Navbar() {
 
     
     const changeNavBar =() =>{
-        console.log(window.screenY);
+      
         if(window.scrollY >= 500){
             setnavBarScroll(true)
             setnavBarScroll2(false)
             
         }
+       
         else if (window.scrollY <= 200) {
             setnavBarScroll2(true)
             setnavBarScroll(true)
         }
+       
         else{
             setnavBarScroll(false)
         }
     }   
-    window.addEventListener('scroll', changeNavBar);
+    useEffect(()=>{
+        changeNavBar()
+    },[])
+    window.addEventListener('scroll',changeNavBar)
+    
     
   return (
-    <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-[2000ms]   ${navBarScroll ? ' -translate-y-0 after:content-none' : '-translate-y-full '} ${navBarScroll2 ? 'relative duration-[0s] after:content-[""]' :'fixed '}` }>
+    <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-[2000ms]   ${navBarScroll ? ' -translate-y-0 after:content-none' : '-translate-y-full '} ${navBarScroll2 ? ' relative duration-[0s] after:content-[""]' :'fixed '}` }>
         <div className={`flex  text-white py-2 px-4 items-center justify-start relative flex-wrap mx-11 lg:justify-around lg:py-5`}>
             <div className={`basis-1/8`}><img className='max-w-none'  src={logo}></img></div>
             <div className={`basis-3/6  grow lg:hidden`}>

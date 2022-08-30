@@ -5,7 +5,7 @@ export default function CardFilm(props) {
 
  
   const moviePopular = props.item;
-  console.log(moviePopular);
+  
   return (
     <div className='mr-11 w-56 relative card-container'>
         <div className='bg-black-color p-4'>

@@ -41,12 +41,21 @@
 .test2 {
     transition: max-height 0.5s;
 }
+.toprate-header::before{
+    content: "";
+    background: url(./assets/home/title_shape.png);
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    width: 98px;
+    height: 7px;
+    
+    margin:  auto;
+}
 
   
-.tabBar{
-    
 
-}
 
 @layer components {
     .btn {
@@ -62,5 +71,15 @@
     .card-container :hover .card-btn{
         @apply opacity-100 -translate-y-0
     }
+    .slide-active {
+        @apply w-[1052px] 
+    }
+    .slick-slide{
+        @apply w-[1052px] 
+    }
+    .btn-pagnination {
+        @apply px-5 py-2 border-[1.5px] bg-black border-white border-solid font-semibold hover:bg-yellow-color hover:text-black hover:border-yellow-color
+    }
+    
      
 }
