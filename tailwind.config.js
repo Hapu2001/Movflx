@@ -20,7 +20,8 @@ module.exports = {
         'home_bg02': "url('/src/assets/home/ucm_bg02.jpg')",
         'slider_img02':"url('/src/assets/home/slider_img02.jpg')",
         'gallery_bg':"url('/src/assets/home/gallery_bg.jpg')",
-        'toprate_bg':"url('/src/assets/home/tr_movies_bg.jpg')"
+        'toprate_bg':"url('/src/assets/home/tr_movies_bg.jpg')",
+        'movie_banner': "url('/src/assets/Movie/breadcrumb_bg.jpg')"
       },
       screens: {
         'min-xl': '1030px',
@@ -33,7 +34,7 @@ module.exports = {
         'lg': {'max': '1030px'},
         // => @media (max-width: 1023px) { ... }
   
-        'md': {'max': '767px'},
+        'md': {'max': '790px'},
         // => @media (max-width: 767px) { ... }
   
         'sm': {'max': '639px'},

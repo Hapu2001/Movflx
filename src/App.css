@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 .navbar::after {
-    content:"";
+    
     position: absolute;
     background: url(./assets//home/header_bottom_shape.png);
     left: 0;
@@ -53,13 +53,22 @@
     
     margin:  auto;
 }
+.banner::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background-color: black;
+}
 
-  
 
 
 @layer components {
     .btn {
-     @apply  bg-black-color rounded-full px-9 py-4 border-blue-darken border-2 font-bold text-[12px] cursor-pointer
+     @apply  bg-black-color rounded-full px-9 py-4 border-blue-darken border-2 font-bold cursor-pointer text-[12px] cursor-pointer hover:bg-yellow-color hover:text-black
     }
     .card-container :hover .card-img{
         @apply opacity-30
@@ -71,6 +80,7 @@
     .card-container :hover .card-btn{
         @apply opacity-100 -translate-y-0
     }
+    
     .slide-active {
         @apply w-[1052px] 
     }

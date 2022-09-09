@@ -3,11 +3,23 @@ import request from '../../shared/Requests';
 import axios from 'axios'
 import CardFilm from '../commons/CardFilm';
 import Pagination from '../commons/Pagination';
+import { useDispatch} from 'react-redux'
+import {usersSlice} from '../../store/Slice/UserSlice'
 
 export default function TopRate() {
     const axios = require('axios');
+    const dispath = useDispatch();
+    const handleAdd = (item)=>{
+        dispath(
+            usersSlice.actions.addBookmark( item )
+        )
+    } 
+    const deleteBook = (id)=>{
+        dispath(
+            usersSlice.actions.deleteBookmark(id)
+        )
+    }
     const [toprated, setToprated] = useState([])
-
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNumberLimit, setPageNumberLimit] = useState(2);
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(2);
@@ -46,7 +58,7 @@ export default function TopRate() {
             setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit); 
         }
     }
-    console.log(maxPageNumberLimit);
+    
   return (
     <div className='bg-toprate_bg text-white py-32 '>
         <div className='text-center font-bold toprate-header relative mb-20'>
@@ -57,8 +69,11 @@ export default function TopRate() {
         <div className='flex flex-wrap justify-center'>
         {currentFilm.map((item)=>{
             return (
-                <div className='mb-5' key={item.id}>
-                        <CardFilm item={item}/>
+                <div className='mb-5 md:basis-1/2' key={item.id}>
+                        <CardFilm 
+                             handleAdd={handleAdd}
+                             deleteBook={deleteBook}
+                        item={item}/>
                 </div>
             )
         })}

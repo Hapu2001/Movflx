@@ -14,15 +14,21 @@ export default function Gallery() {
     const [upcoming, setUpcoming] = useState([])
     const [slideindex, setSlideindex] = useState(0)
     const settings = {
-     
-
         speed: 2000,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed:  4000,
         beforeChange : (current, newIndex) => setSlideindex(newIndex),
         centerMode: true,
-        centerPadding: '250px'
+        centerPadding: '250px',
+        responsive : [{
+            breakpoint: 600,
+            settings : {
+                centerPadding: '5px',
+            }
+        }
+
+        ]
         
     }
     useEffect(()=>{
@@ -48,7 +54,7 @@ export default function Gallery() {
             })}
         </Slider>
         </div>
-        <div className="flex mx-60  justify-between text-white">
+        <div className="flex mx-60  justify-between text-white sm:mx-10">
             <p className='font-bold hover:text-yellow-color hover:cursor-pointer ' onClick={()=>sliderRef.current.slickPrev()}>
                <FontAwesomeIcon className="mx-2 " icon={ faCaretLeft}/> PREVIOUS
                 </p>

@@ -4,16 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, HashRouter } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import {Provider} from 'react-redux';
+import store  from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   <React.StrictMode>
-    <HashRouter>
+    <Provider store={store}>
+    <HashRouter  >
       <section className="font-poppins">
       <App />
+      <ToastContainer />
       </section>
     </HashRouter>
+    </Provider>
   </React.StrictMode>
   
 );

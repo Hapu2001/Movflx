@@ -30,19 +30,19 @@ export default function Popular() {
     },[request.requestTvPopular, request.requestMoviePopular])
   return (
     <div className="bg-home_bg02 text-white py-32 bg-center">
-        <div className="px-4 mx-20">
-            <div className='flex items-end mb-14'>
-                <div className='basis-1/2 pb-7 header_popular relative'>
+        <div className="px-4 mx-20 md:mx-0">
+            <div className='flex items-end mb-14 flex-wrap relative '>
+                <div className='basis-1/2 pb-7 header_popular relative  md:basis-full md:text-center after:md:mx-auto '>
                     <span className="mb-3 text-[#bcbcbc] font-semibold text-xs">ONLINE STREAMING</span>
-                    <h2 className='text-4xl font-bold'>Popular Movies</h2>
+                    <h2 className='text-4xl font-bold md:text-3xl'>Popular Movies</h2>
                 </div>
-                <div className='basis-1/2 flex items-end'>
-                    <div className='flex  w-full '>
-                        <p className={'btn mr-3 mt-3 ml-auto'} onClick={()=>{setTab(true)}}>TV Show</p>
+                <div className='basis-1/2 flex items-end md:flex-wrap md:basis-full justify-center '>
+                    <div className='flex  w-full  md:justify-center md:mb-4'>
+                        <p className={'btn mr-3 mt-3 ml-auto md:ml-0  '} onClick={()=>{setTab(true)}}>TV Show</p>
                         <p className="btn mr-3 mt-3" onClick={()=>{setTab(false)}}>Movies</p>
                        
                     </div>
-                    <div className='flex  btn py-2 px-5  h-14'>
+                    <div className='flex  btn py-2 px-5  h-14 '>
                             <p ref={navigationPrevRef}  className='pre font-black relative pr-4  leading-9'>  <FontAwesomeIcon  className='mr-2 ' icon={faAngleLeft}/></p>
                             
                             <p ref={navigationNextRef} className='leading-9' >  <FontAwesomeIcon  className='ml-5 font-black' icon={faAngleRight} /></p>
@@ -50,7 +50,21 @@ export default function Popular() {
                 </div>
             </div>
             <div>
-                <Swiper className="flex mySwiper swiper"  slidesPerView={5}
+                <Swiper className="flex mySwiper swiper "
+                         breakpoints={{
+                            300: {
+                                slidesPerView: 1,
+                              },
+                            576: {
+                          
+                              slidesPerView: 2,
+                            },
+                            800: {
+                          
+                              slidesPerView: 5,
+                            },
+                          }} 
+                        
                         spaceBetween={40}
                         loop={true}
                         centerSlider={true}
@@ -60,16 +74,18 @@ export default function Popular() {
                             prevEl: navigationPrevRef.current,
                             nextEl: navigationNextRef.current,
                           }}
-                          onBeforeInit={(swiper) => {
+                          onBeforeInit={(swiper) =>{
                             swiper.params.navigation.prevEl = navigationPrevRef.current;
                             swiper.params.navigation.nextEl = navigationNextRef.current;
                        }}
                         modules={[ Navigation]}
+                       
+                        
        >
-     { tab=== true ? (popularTV.map((item)=>{
+                        { tab=== true ? (popularTV.map((item)=>{
                     return(
                         <SwiperSlide key={item.id}>
-                            <CardFilm 
+                            <CardFilm className=''
                                 item={item}
                             />
                         </SwiperSlide>
