@@ -43,7 +43,6 @@ export default function ListFilm() {
          tam.push(genres);
        }
        setIdGenres(tam)
-       console.log(tam)
     }
         
     const applyFilers = (film,idGenres)=>{
@@ -58,7 +57,6 @@ export default function ListFilm() {
                 }
                 return false;
         }
-    console.log(sortRate)
   return (
     <div className='bg-toprate_bg text-white pt-12'>
         <div className='mx-6'>

@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { style, styled } from '@mui/system'
 import { Link, useLocation,useNavigate } from "react-router-dom";
 import {   ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import {auth,logout} from '../../shared/firebase.js'
 import {useAuthState} from 'react-firebase-hooks/auth'
 
 export default function Navbar() {
+
     const [mobileMovie, setMobileMovie] = useState(false);
     const [mobileTvShow, setmobileTvShow] = useState(false);
     const [navMobile, setnavMobile] = useState(false);
@@ -21,6 +22,8 @@ export default function Navbar() {
     const [profile,setProfile]= useState(false);
 
     const [user,loading,error] = useAuthState(auth);
+    
+   
     const handleScroll = () =>{
         const currentScrollPos = window.scrollY
         if(currentScrollPos <150){
@@ -56,8 +59,8 @@ export default function Navbar() {
     useEffect(()=>{
         if (loading) return
        
-    },)
-
+    })
+    
     
     return (
         <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${visible ? 'top-0' :'-top-[112px]'}`}>
@@ -79,8 +82,12 @@ export default function Navbar() {
                     <div className={`flex  items-center  basis-2/3 relative`}>
                         <div className='relative'>
                             <form className='relative xl:hidden '>
-                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie"></input>
-                                <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'><FontAwesomeIcon icon={faSearch}/></p> 
+                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie"
+                                
+                                ></input>
+                                <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
+                                onClick={()=>{history('/search')}}
+                                ><FontAwesomeIcon icon={faSearch}/></p> 
                         </form>
                         </div>
                         <div className='flex items-center '>

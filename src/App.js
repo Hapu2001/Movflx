@@ -17,6 +17,7 @@ function App() {
             <Route path="tvshow" element={<Tvshow />} />
             <Route path="auth" element={<Auth />} />
             <Route path="bookmark" element={<BookMark />} />
+            <Route path="search" element={<Search />} />
         </Routes>
   );
 }

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, HashRouter } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import {Provider} from 'react-redux';
 import store  from './store/store';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,7 @@ root.render(
     <HashRouter  >
       <section className="font-poppins">
       <App />
-      <ToastContainer />
+      <ToastContainer autoClose={1000}/>
       </section>
     </HashRouter>
     </Provider>

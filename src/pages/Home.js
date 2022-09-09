@@ -6,6 +6,7 @@ import Popular from '../components/Home/Popular'
 import TopRate from '../components/Home/TopRate'
 
 export default function Home() {
+ 
   return (
     <div className='overflow-x-hidden'>
       <Navbar />

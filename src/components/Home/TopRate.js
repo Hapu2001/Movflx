@@ -40,7 +40,7 @@ export default function TopRate() {
     for (let i = 1; i<= Math.ceil(toprated.length / itemsPerPage); i++) {
         pagesNumber.push(i);
     }
-    console.log(pagesNumber);
+
     const indexOfLastItem = currentPage*itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentFilm = toprated.slice(indexOfFirstItem, indexOfLastItem);

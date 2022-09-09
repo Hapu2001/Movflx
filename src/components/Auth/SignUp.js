@@ -96,7 +96,7 @@ export default function SignUp(props) {
                <p>{formError.email }</p>
             </div>  
             <div className='my-5'>
-              <input className='bg-white text-black border-2   px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none  w-full' type='text' placeholder='Password'
+              <input className='bg-white text-black border-2   px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none  w-full' type='password' placeholder='Password'
               name='passwords' 
               onChange={handleChange}  
               ></input>  
