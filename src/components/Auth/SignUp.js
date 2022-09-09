@@ -60,8 +60,8 @@ export default function SignUp(props) {
   }
     useEffect(()=>{
       register()
-    },[formError])
-    console.log(user)
+    },[formError,user])
+    
   return (
     <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
     <div className='w-[500px] mx-auto mt-20 text-center'>
