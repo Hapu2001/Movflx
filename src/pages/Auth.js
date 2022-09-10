@@ -10,7 +10,7 @@ export default function Auth() {
     <div className="text-white">
         <div className="fixed h-full w-full bg-black z-[2] opacity-80">
         </div>
-         <video className="w-full fixed"  muted
+         <video className="w-full fixed lg:hidden"  muted
                 autoPlay
                  loop>
             <source  src={video} type="video/mp4" />

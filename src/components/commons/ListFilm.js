@@ -61,8 +61,8 @@ export default function ListFilm() {
     <div className='bg-toprate_bg text-white pt-12'>
         <div className='mx-6'>
         
-            <div className="flex">
-                <div className="basis-1/6" >
+            <div className="flex sm:flex-wrap sm:justify-center">
+                <div className="basis-1/6 sm:basis-full" >
                         <Filter genres={genres} 
                                 setIdGenres={setIdGenres}
                                 idGenres={idGenres}
@@ -70,7 +70,7 @@ export default function ListFilm() {
                                 setSortRate={setSortRate}
                         />
                     </div>
-                <div className=' basis-5/6 '>
+                <div className=' basis-5/6  '>
                     <div className='flex flex-wrap justify-center'>
                         {idGenres.length === 0 ? (popularTV.map((item)=>{
                         return(

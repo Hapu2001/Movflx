@@ -65,7 +65,7 @@ export default function Navbar() {
     return (
         <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${visible ? 'top-0' :'-top-[112px]'}`}>
             <div className={`flex  text-white py-2 px-4 items-center justify-start relative flex-wrap mx-11 lg:justify-around lg:py-5`}>
-                <div className={`basis-1/8`}><img className='max-w-none'  src={logo}></img></div>
+                <div className={`basis-1/8`}><Link className='' to="/"><img className='max-w-none'  src={logo}></img></Link></div>
                 <div className={`basis-3/6  grow lg:hidden`}>
                 
                     <div className='flex flex-row flex-wrap basis-3/4'>
@@ -119,26 +119,26 @@ export default function Navbar() {
             <div  className={`fixed text-white z-40 top-0 right-0 w-[300px] h-[100vh] bg-[#171d22] overflow-x-hidden transition-all duration-1000 ${navMobile===true ? 'translate-x-0': 'translate-x-full'} `}>
                 <div>
                     <div className='px-6 py-8 flex justify-between items-center'>
-                        <img className='max-w-none' src={logo}></img>
+                    <Link  to="/">   <img className='max-w-none' src={logo}></img> </Link>
                         <p className='text-xl font-bold cursor-pointer' onClick={()=>{ navMobile===true ? setnavMobile(false): setnavMobile(true)}}><FontAwesomeIcon className='font-black' icon={faTimes} /></p> 
                     </div>
                     <div>
                         <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>
-                            <p className='mr-32'>Home</p>
+                        <Link  to="/"> <p className='mr-32'>Home</p></Link>
                         </p>
                         <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>
-                            <p >Movie</p>
+                        <Link  to="/movies"> <p >Movie</p></Link>
                             <p className='bg-blue-darken w-8 h-8 leading-8 text-center ml-auto' onClick={()=>mobileMovie ===true ? setMobileMovie(false): setMobileMovie(true)}><FontAwesomeIcon icon={faAngleDown} /></p>
                         </p>
                             <p className={`  overflow-hidden test ${mobileMovie === true ? ' max-h-24 ' : 'max-h-0 '}`}>
-                                <p className='px-14 py-3 border-t-[1px] border-[#ffffff1a]'>Movie</p>
+                            <Link  to="/movies">  <p className='px-14 py-3 border-t-[1px] border-[#ffffff1a]'>Movie</p></Link>
                                 <p className='px-14 border-t-[1px] border-[#ffffff1a] px-7 py-3'>Movie Details</p>
                             </p>
 
                     
                         
                         <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>
-                            <p className='mr-32'>Tv Show</p>
+                        <Link  to="/movies"> <p className='mr-32'>Tv Show</p></Link>
                             <p className='bg-blue-darken w-8 h-8 leading-8 text-center ml-auto' 
                                 onClick={()=>{mobileTvShow ===true ? setmobileTvShow(false): setmobileTvShow(true)}}
                             ><FontAwesomeIcon icon={faAngleDown} />
@@ -150,8 +150,12 @@ export default function Navbar() {
                                 <p className='px-14 border-t-[1px] border-[#ffffff1a] px-7 py-3'>Tv Show Details</p>
                         </p>
                     
-                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>Blog</p>
-                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>Contact</p>
+                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a] cursor-pointer'
+                         onClick={()=>handleBookmark("/bookmark")}
+                        >BookMark</p>
+                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>{(user) ? 
+                        (<p onClick={()=>{logout(auth)}}>Log Out</p>):
+                        (<Link to='/auth'><p>Sign In</p></Link>)}</p>
                     </div>
                     <div className='px-6 py-8 border-t-[1px] border-[#ffffff1a]'>
                         <p>Social</p>

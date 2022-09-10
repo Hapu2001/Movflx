@@ -76,7 +76,7 @@ export default function SignIn(props) {
   return (
     <>
       <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
-        <div className='w-[500px] mx-auto mt-20 text-center'>
+        <div className='w-[500px] mx-auto mt-20 text-center sm:w-[350px]'>
           <div>
             <p className='text-5xl'>Sign In To <span className='text-yellow-color'>Movflx</span> </p> 
             <div className='flex justify-center my-5'>

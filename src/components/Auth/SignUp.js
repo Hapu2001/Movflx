@@ -64,7 +64,7 @@ export default function SignUp(props) {
     
   return (
     <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
-    <div className='w-[500px] mx-auto mt-20 text-center'>
+    <div className='w-[500px] mx-auto mt-20 text-center sm:w-[350px]'>
       <div>
         <p className='text-5xl'> <span className='text-yellow-color'>Create Account</span> </p> 
         <div className='flex justify-center my-5'>
@@ -75,14 +75,14 @@ export default function SignUp(props) {
       </div>
       <div>
         <form onSubmit={onSubmitForm}>
-            <div className='my-5 flex justify-between'>
-                <p><input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='First name'
+            <div className='my-5 flex justify-between sm:flex-wrap'>
+                <p className='sm:basis-full'><input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='First name'
                 name='firstName'
                 onChange={handleChange}    
                 ></input>
                 <p>{formError.firstName }</p>
                 </p> 
-                <p> <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full' placeholder='Last name'
+                <p className='sm:basis-full sm:mt-5'> <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full' placeholder='Last name'
                 name='lastName'
                 onChange={handleChange}  
                 ></input>  

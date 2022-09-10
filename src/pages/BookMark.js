@@ -23,7 +23,12 @@ export default function BookMark() {
       <Navbar />
       <div className=''>
       <div className='flex flex-wrap justify-center'>
-      {bookmark?.map((item)=>{
+
+        {bookmark.length === 0 ?  (
+          <div className="text-white text-5xl pt-10">Movie list is currently not available
+          </div>
+        ):
+        (bookmark?.map((item)=>{
             return (
                 <div className='mb-5 md:basis-1/2' key={item.id}>
                         <CardFilm 
@@ -31,7 +36,8 @@ export default function BookMark() {
                           
                 </div>
             )
-        })}
+        }))
+       }
         </div>
       </div>
     </div>
