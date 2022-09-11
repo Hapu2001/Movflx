@@ -49,6 +49,9 @@ export default function Navbar() {
         }   
             history(destinationUrl)
         }
+    const handleError =( ) =>{
+        toast.info('Website under development')
+    }
               
     useEffect(()=>{
        
@@ -71,7 +74,7 @@ export default function Navbar() {
                     <div className='flex flex-row flex-wrap basis-3/4'>
                     <Link className='ml-auto' to="/">   <p   className={`${location.pathname === "/" && 'text-yellow-color'}  ml-auto px-6 py-9 font-bold hover:text-yellow-color cursor-pointer`} >HOME</p></Link>
                     <Link to="/movies"><p  className={`${location.pathname === "/movies" && 'text-yellow-color'} px-6 py-9 font-bold hover:text-yellow-color cursor-pointer`} >MOVIE</p></Link>
-                    <Link to="/">      <p   className={`px-6 py-9 font-bold hover:text-yellow-color cursor-pointer`} >TV SHOW</p></Link>
+                    <Link to="/">      <p   className={`px-6 py-9 font-bold hover:text-yellow-color cursor-pointer`} onClick={()=>{handleError()}} >TV SHOW</p></Link>
                     <p onClick={()=>handleBookmark("/bookmark")}>      <p   className={`px-6 py-9 font-bold hover:text-yellow-color cursor-pointer`} 
                             
                     >BOOKMARK</p></p>
@@ -86,7 +89,7 @@ export default function Navbar() {
                                 
                                 ></input>
                                 <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
-                                onClick={()=>{history('/search')}}
+                                onClick={()=>{handleError()}}
                                 ><FontAwesomeIcon icon={faSearch}/></p> 
                         </form>
                         </div>
@@ -104,7 +107,7 @@ export default function Navbar() {
                                     </div>
                                 </div>) : 
                                 (<Link to='/auth'> 
-                                <p className={`w-32 py-2 font-bold px-6 bg-black-color rounded-full border-2 cursor-pointer border-[#e4d804] hover:text-black-color hover:bg-yellow-color ml-9 md:hidden`}>SIGN IN
+                                <p className={`w-32 py-2 font-bold px-6 bg-black-color rounded-full border-2 cursor-pointer border-[#e4d804] hover:text-black-color hover:bg-yellow-color ml-9 md:hidden text-center`}>SIGN IN
                                 </p>
                                 </Link>)
                             }

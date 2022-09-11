@@ -7,6 +7,7 @@ import Search from './pages/Search';
 import Tvshow from './pages/Tvshow';
 import Auth from './pages/Auth';
 import BookMark from './pages/BookMark';
+import FilmDetail from './pages/FilmDetail';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             <Route path="auth" element={<Auth />} />
             <Route path="bookmark" element={<BookMark />} />
             <Route path="search" element={<Search />} />
+            <Route path="/:id" element={<FilmDetail />} />
+          
         </Routes>
   );
 }

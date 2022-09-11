@@ -38,14 +38,14 @@ export default function Popular() {
                 </div>
                 <div className='basis-1/2 flex items-end md:flex-wrap md:basis-full justify-center '>
                     <div className='flex  w-full  md:justify-center md:mb-4'>
-                        <p className={'btn mr-3 mt-3 ml-auto md:ml-0  '} onClick={()=>{setTab(true)}}>TV Show</p>
-                        <p className="btn mr-3 mt-3" onClick={()=>{setTab(false)}}>Movies</p>
+                        <p className={`btn mr-3 mt-3 ml-auto md:ml-0 ${tab && 'bg-yellow-color text-black'} `} onClick={()=>{setTab(true)}}>TV Show</p>
+                        <p className={`btn mr-3 mt-3 ${!tab && 'bg-yellow-color text-black'}`} onClick={()=>{setTab(false)}}>Movies</p>
                        
                     </div>
-                    <div className='flex  btn py-2 px-5  h-14 '>
-                            <p ref={navigationPrevRef}  className='pre font-black relative pr-4  leading-9'>  <FontAwesomeIcon  className='mr-2 ' icon={faAngleLeft}/></p>
+                    <div className='flex   py-2 px-5  h-14 '>
+                            <p ref={navigationPrevRef}  className='hover:text-yellow-color cursor-pointer pre font-black relative pr-4  leading-9'>  <FontAwesomeIcon  className='mr-2 ' icon={faAngleLeft}/></p>
                             
-                            <p ref={navigationNextRef} className='leading-9' >  <FontAwesomeIcon  className='ml-5 font-black' icon={faAngleRight} /></p>
+                            <p ref={navigationNextRef} className='leading-9 hover:text-yellow-color cursor-pointer' >  <FontAwesomeIcon  className='ml-5 font-black' icon={faAngleRight} /></p>
                       </div>
                 </div>
             </div>
