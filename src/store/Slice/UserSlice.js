@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 export const usersSlice = createSlice({
-    name: 'user',
+    name: 'bookmark',
     initialState: [],
     reducers:{
         addBookmark(state,action){       
@@ -13,9 +13,8 @@ export const usersSlice = createSlice({
                 state.push(action.payload);
             }
         },
-        deleteBookmark(state,action){
-          const removeList=  state.filter(item=>item.id !== action.payload)
-          state=removeList
+        deleteBookmark: (state,action)=>{
+         return state.filter(item=>item.id !== action.payload.id)
         },
     }
 })

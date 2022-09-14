@@ -8,7 +8,7 @@ import {useAuthState} from 'react-firebase-hooks/auth'
 
 
 export default function BookMark() {
-  const bookmark =  useSelector(state=>state.user)
+  const bookmark =  useSelector(state=>state.bookmark)
   const [user,loading,error] = useAuthState(auth);
   useEffect(()=>{
    try

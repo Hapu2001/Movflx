@@ -65,14 +65,19 @@ export default function SignIn(props) {
       }
     }
   } 
-
+  const myser=(...params) =>{
+    return params
+  }
+  console.log(myser(1,3,4));
   useEffect(()=>{
       if(Object.keys(formErrors).length === 0)
       {login()
       }
+  
     }
   ,[formErrors,user])
-    console.log(user);
+
+       
   return (
     <>
       <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>

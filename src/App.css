@@ -63,6 +63,20 @@
     position: absolute;
     background-color: black;
 }
+.details__div-review::-webkit-scrollbar{
+    width: 12px;
+}
+.details__div-review::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #3d3d44;
+    margin-block: 5px;
+}
+.details__div-review::-webkit-scrollbar-thumb  {
+    border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #e4d804;
+}
 
 
 
@@ -90,6 +104,8 @@
     .btn-pagnination {
         @apply px-5 py-2 border-[1.5px] bg-black border-white border-solid font-semibold hover:bg-yellow-color hover:text-black hover:border-yellow-color
     }
+   
+    
     
      
 }

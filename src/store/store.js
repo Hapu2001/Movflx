@@ -3,7 +3,7 @@ import userReducer from './Slice/UserSlice'
 
 const store = configureStore({
     reducer:{
-        user:userReducer
+        bookmark:userReducer
     }
 })
 export default store

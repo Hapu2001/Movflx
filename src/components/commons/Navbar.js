@@ -10,7 +10,7 @@ import {   ToastContainer,toast } from 'react-toastify';
 import {auth,logout} from '../../shared/firebase.js'
 import {useAuthState} from 'react-firebase-hooks/auth'
 
-export default function Navbar() {
+export default function Navbar(props) {
 
     const [mobileMovie, setMobileMovie] = useState(false);
     const [mobileTvShow, setmobileTvShow] = useState(false);
@@ -86,11 +86,10 @@ export default function Navbar() {
                         <div className='relative'>
                             <form className='relative xl:hidden '>
                                 <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie"
-                                
+                                onChange={(e)=>{props.handleSearch(e.target.value)}}
                                 ></input>
                                 <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
-                                onClick={()=>{handleError()}}
-                                ><FontAwesomeIcon icon={faSearch}/></p> 
+                                ><Link to='/search'><FontAwesomeIcon icon={faSearch}/></Link></p> 
                         </form>
                         </div>
                         <div className='flex items-center '>

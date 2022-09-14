@@ -17,7 +17,7 @@ export default function Popular() {
     const navigationNextRef = useRef(null)
     const [popularTV, setPopularTV] = useState([])
     const [pupularMovie,setPopularMovie] = useState([])
-    const [tab,setTab] = useState(true)
+    const [tab,setTab] = useState(false)
     useEffect(()=>{
         axios.all([
             axios.get(request.requestTvPopular),
@@ -38,8 +38,8 @@ export default function Popular() {
                 </div>
                 <div className='basis-1/2 flex items-end md:flex-wrap md:basis-full justify-center '>
                     <div className='flex  w-full  md:justify-center md:mb-4'>
-                        <p className={`btn mr-3 mt-3 ml-auto md:ml-0 ${tab && 'bg-yellow-color text-black'} `} onClick={()=>{setTab(true)}}>TV Show</p>
-                        <p className={`btn mr-3 mt-3 ${!tab && 'bg-yellow-color text-black'}`} onClick={()=>{setTab(false)}}>Movies</p>
+                        <p className={`btn mr-3 mt-3 ml-auto md:ml-0 ${tab && 'bg-yellow-color text-black ' } border-yellow-color`} onClick={()=>{setTab(true)}}>TV Show</p>
+                        <p className={`btn mr-3 mt-3 ${!tab && 'bg-yellow-color text-black'} border-yellow-color`} onClick={()=>{setTab(false)}}>Movies</p>
                        
                     </div>
                     <div className='flex   py-2 px-5  h-14 '>

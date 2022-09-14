@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { faPlay,faCalendar, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -29,14 +29,14 @@ export default function Banner() {
                             <span className='bg-black-color  px-3 py-1 ml-2 border-2 text-white'>HD</span>
                         </p>
                         <p className='mr-4 mb-3'>
-                            <span>Romance</span>
-                            <span>,Drama</span>
+                            <span>Adventure</span>
+                            <span>, Action</span>
                         </p>
-                        <p>Date</p>
+                        <p> <span className='text-yellow-color mr-2'><FontAwesomeIcon icon={faCalendarAlt } /></span>2022</p>
                     </div>
                     <div data-aos="fade-up">
-                    <span className={'btn cursor-pointer'} >
-                            <FontAwesomeIcon  className='mr-2' icon={faPlay} /> WATCH NOW
+                    <span className={'btn cursor-pointer border-yellow-color'} >
+                            <FontAwesomeIcon  className='mr-2 ' icon={faPlay} /> WATCH NOW
                     </span>
                     </div>
                 </div>

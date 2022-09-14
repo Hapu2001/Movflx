@@ -24,14 +24,14 @@ export default function Details() {
    
   return (
     <div>
-        <div className='py-[70px] w-full lg:py-5'>
+        <div className='py-[70px] w-full lg:py-5 lg:py-[0px]'>
             <div className='text-3xl mx-[120px] lg:mx-0 my-5'>{detail.original_title}</div>
             <div className='flex mx-[120px] mb-[70px]  lg:mx-0 lg:flex-wrap '>
                    <div className='basis-1/2 flex px-3 lg:basis-full lg:justify-center sm:flex-col' >
                         <div>
                             <div >
                                 <div className='max-w-[250px] sm:mx-auto'><img className='rounded-md' src={`https://image.tmdb.org/t/p/original/${detail.poster_path}`}></img></div>
-                                <div className='rounded-md btn text-center text-lg  mt-4'>Watch Trailer</div>
+                                <div className='rounded-md btn text-center text-lg  mt-4 border-yellow-color'>Watch Trailer</div>
                             </div>
                         </div>
                         <div className='mx-7 flex flex-col'>
@@ -47,8 +47,8 @@ export default function Details() {
                             </p>
                             <p className='my-2'>Popularity: {detail.popularity} </p>
                             <p className='my-2'>Release date: {detail.release_date} </p>
-                            <div className='bg-black-color h-[200px] px-4 py-4 w-[280px] rounded-md  overflow-y-scroll mt-auto'>
-                                <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</div>
+                            <div className='bg-black-color h-[200px] px-4 py-4 w-[280px] rounded-md  overflow-y-scroll mt-auto  details__div-review'>
+                                <div className=''>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</div>
                             </div>
                         </div>
                     </div>
