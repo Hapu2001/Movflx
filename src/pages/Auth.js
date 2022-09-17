@@ -8,7 +8,7 @@ export default function Auth() {
   const [show,setShow] = useState(true)
   return (
     <div className="text-white">
-        <div className="fixed h-full w-full bg-black z-[2] opacity-80">
+        <div className="fixed h-full w-full bg-black z-[2] opacity-90">
         </div>
          <video className="w-full fixed lg:hidden"  muted
                 autoPlay

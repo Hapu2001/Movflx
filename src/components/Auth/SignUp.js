@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useCallback} from 'react'
 import { FaFacebookF, } from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc'
 import {auth, signUp } from '../../shared/firebase.js'
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 export default function SignUp(props) {
 
+ 
   const [form, setForm ] = useState({
     firstName:'',
     lastName:'',
@@ -67,58 +68,62 @@ export default function SignUp(props) {
     useEffect(()=>{
       register()
     },[formError,user])
-    
+    const firstInput = useCallback((inputElement)=>{
+      if(inputElement){
+        inputElement.focus();
+      }
+  },[])
   return (
     <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
-    <div className='w-[500px] mx-auto mt-20 text-center sm:w-[350px]'>
-      <div>
-        <p className='text-5xl'> <span className='text-yellow-color'>Create Account</span> </p> 
-        <div className='flex justify-center my-5'>
-          <p className='text-blue-900 px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FaFacebookF /></p>
-          <p className='px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FcGoogle /></p> 
+      <div className='w-[500px] mx-auto mt-10 text-center sm:w-[350px] '>
+        <div>
+          <p className='text-5xl'> <span className='text-yellow-color'>Create Account</span> </p> 
+          <div className='flex justify-center my-5'>
+            <p className='text-blue-900 px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FaFacebookF /></p>
+            <p className='px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FcGoogle /></p> 
+          </div>
+          <p className='text-lg'>or use your account:</p>
         </div>
-        <p className='text-lg'>or use your account:</p>
-      </div>
-      <div>
-        <form onSubmit={onSubmitForm}>
-            <div className='my-5 flex justify-between sm:flex-wrap'>
-                <p className='sm:basis-full'><input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='First name'
-                name='firstName'
-                onChange={handleChange}    
-                ></input>
-                <p>{formError.firstName }</p>
-                </p> 
-                <p className='sm:basis-full sm:mt-5'> <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full' placeholder='Last name'
-                name='lastName'
+        <div>
+          <form onSubmit={onSubmitForm}>
+              <div className='my-5 flex justify-between sm:flex-wrap'>
+                  <p className='sm:basis-full'><input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='First name'
+                  name='firstName'
+                  onChange={handleChange} 
+                  ref={firstInput}   
+                  ></input>
+                  <p>{formError.firstName }</p>
+                  </p> 
+                  <p className='sm:basis-full sm:mt-5'> <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full' placeholder='Last name'
+                  name='lastName'
+                  onChange={handleChange}  
+                  ></input>  
+                    <p>{formError.lastName }</p></p> 
+              </div>
+              <div className='my-5'>
+                <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='Email'
+                name='email'
                 onChange={handleChange}  
                 ></input>  
-                  <p>{formError.lastName }</p></p> 
-            </div>
-            <div className='my-5'>
-              <input className='bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='text' placeholder='Email'
-              name='email'
-              onChange={handleChange}  
-              ></input>  
-               <p>{formError.email }</p>
-            </div>  
-            <div className='my-5'>
-              <input className='bg-white text-black border-2   px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none  w-full' type='password' placeholder='Password'
-              name='passwords' 
-              onChange={handleChange}  
-              ></input>  
-              <p>{formError.passwords }</p>
-            </div>  
-            <div className='my-8' >
-              <button type='submit' className='btn border-yellow-color' >SIGN UP</button>
-            </div>
-        </form>
+                <p>{formError.email }</p>
+              </div>  
+              <div className='my-5'>
+                <input className='bg-white text-black border-2   px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none  w-full' type='password' placeholder='Password'
+                name='passwords' 
+                onChange={handleChange}  
+                ></input>  
+                <p>{formError.passwords }</p>
+              </div>  
+              <div className='my-8' >
+                <button type='submit' className='btn border-yellow-color' >SIGN UP</button>
+              </div>
+          </form>
+        </div>
+        <div className='flex justify-center text-lg'>
+            <p>Already a member? </p>
+            <p className='hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline' onClick={()=>props.setShow(true)}>Sign In</p>
+        </div>
       </div>
-      <div className='flex justify-center text-lg'>
-          <p>Already a member? </p>
-          <p className='hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline' onClick={()=>props.setShow(true)}>Sign In</p>
-      </div>
-
-    </div>
     </div>
   )
 }

@@ -5,7 +5,10 @@ export const searchSlice = createSlice({
     initialState: "",
     reducers: {
         searchFilm(state, action){
-          state = action.payload;
+          return state = action.payload;
         }
     }
 })
+const {actions, reducer} = searchSlice;
+export const {searchFilm} = actions
+export default reducer;

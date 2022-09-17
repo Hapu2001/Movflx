@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useCallback} from 'react'
 import { FaFacebookF, } from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -9,6 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function SignIn(props) {
+
+  const emailInput = useCallback((inputElement) => {
+      if(inputElement){
+        inputElement.focus();
+      }
+  },[])
+
   const history = useNavigate();
   const [form, setForm ] = useState({
     email:'',
@@ -97,7 +104,7 @@ export default function SignIn(props) {
                 <div className='my-5'>
                   <input className='bg-white text-black px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full'  placeholdertype='email' placeholder='Email' name='email'
                   onChange={handleChange}
-              
+                  ref={emailInput}
                   >
                   </input>  
                   <p>{formErrors.email || errorLogin.user }</p>

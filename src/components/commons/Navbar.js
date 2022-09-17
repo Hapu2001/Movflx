@@ -1,16 +1,27 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useCallback} from 'react'
 import logo from '../../assets/home/logo.png'
 import header_bottom from '../../assets/home/header_bottom_shape.png'
 import { faSearch,faBars, faAngleDown,faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { style, styled } from '@mui/system'
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import { Link, useLocation,useNavigate,useSearchParams } from "react-router-dom";
 import {   ToastContainer,toast } from 'react-toastify';
 
 import {auth,logout} from '../../shared/firebase.js'
 import {useAuthState} from 'react-firebase-hooks/auth'
+import { useDispatch} from 'react-redux'
+import {searchSlice} from '../../store/Slice/searchSice'
+import { useSelector } from 'react-redux'
 
 export default function Navbar(props) {
+
+   
+    const dispath = useDispatch();
+    const searchRedux = useSelector(state =>state.search)
+    const [search,setSearch] = useState(searchRedux)
+    const handleSearchRedux = ()=>{
+        dispath(searchSlice.actions.searchFilm(search))
+    }
 
     const [mobileMovie, setMobileMovie] = useState(false);
     const [mobileTvShow, setmobileTvShow] = useState(false);
@@ -64,6 +75,10 @@ export default function Navbar(props) {
        
     })
     
+    console.log(search);
+   
+   
+    
     
     return (
         <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${visible ? 'top-0' :'-top-[112px]'}`}>
@@ -85,11 +100,15 @@ export default function Navbar(props) {
                     <div className={`flex  items-center  basis-2/3 relative`}>
                         <div className='relative'>
                             <form className='relative xl:hidden '>
-                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie"
-                                onChange={(e)=>{props.handleSearch(e.target.value)}}
+                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie" 
+                                value={search}
+                                onChange={(e)=>{setSearch(e.target.value);}}
                                 ></input>
-                                <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
-                                ><Link to='/search'><FontAwesomeIcon icon={faSearch}/></Link></p> 
+                               <Link to="/search"> <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
+                                onClick={()=>{handleSearchRedux()}}
+                               ><FontAwesomeIcon icon={faSearch}
+                               
+                               /></p> </Link>
                         </form>
                         </div>
                         <div className='flex items-center '>
