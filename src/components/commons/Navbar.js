@@ -74,12 +74,7 @@ export default function Navbar(props) {
         if (loading) return
        
     })
-    
-    console.log(search);
-   
-   
-    
-    
+
     return (
         <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${visible ? 'top-0' :'-top-[112px]'}`}>
             <div className={`flex  text-white py-2 px-4 items-center justify-start relative flex-wrap mx-11 lg:justify-around lg:py-5`}>
@@ -104,11 +99,11 @@ export default function Navbar(props) {
                                 value={search}
                                 onChange={(e)=>{setSearch(e.target.value);}}
                                 ></input>
-                               <Link to="/search"> <p className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
+                               <Link to="/search"> <button type='submit' className='text-yellow-color cursor-pointer absolute top-1/2 right-6 translate-y-[-50%]'
                                 onClick={()=>{handleSearchRedux()}}
                                ><FontAwesomeIcon icon={faSearch}
                                
-                               /></p> </Link>
+                               /></button> </Link>
                         </form>
                         </div>
                         <div className='flex items-center '>
@@ -117,10 +112,10 @@ export default function Navbar(props) {
                                 (<div className='relative cursor-pointer ml-5'>
                                     <p className='w-[50px] h-[50px] bg-white rounded-full header-profile' onClick={()=>{{profile ? setProfile(false) : setProfile(true)}}}></p>
                                     <div className='w-[95px] h-[30px] absolute left-1/2 -translate-x-1/2 '></div>
-                                    <div  className={`bg-blue-darken absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-500 overflow-hidden ${profile ? 'max-h-24' : 'max-h-0'}`}>
-                                        <div className='order-white border px-2 py-3 '>
-                                            <p className=''>Profile</p>
-                                            <p className='w-[80px]  mt-2' onClick={()=>{logout(auth)}}>Log out</p>
+                                    <div  className={`bg-blue-darken absolute -left-1/2 -translate-x-1/2 mt-4 transition-all duration-500 overflow-hidden ${profile ? 'max-h-24' : 'max-h-0'}`}>
+                                        <div className='border-yellow-color border px-2 py-3 rounded-md '>
+                                            <p className=''>{user.email}</p>
+                                            <p className='w-full  mt-4' onClick={()=>{logout(auth)}}>Log out</p>
                                         </div>
                                     </div>
                                 </div>) : 
@@ -173,8 +168,10 @@ export default function Navbar(props) {
                     
                         <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a] cursor-pointer'
                          onClick={()=>handleBookmark("/bookmark")}
-                        >BookMark</p>
-                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a]'>{(user) ? 
+                        >Book Mark</p>
+                        {user && <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a] cursor-pointer'
+                            >{user.email}</p>}
+                        <p className='flex px-7 py-3 border-t-[1px] border-[#ffffff1a] cursor-pointer'>{(user) ? 
                         (<p onClick={()=>{logout(auth)}}>Log Out</p>):
                         (<Link to='/auth'><p>Sign In</p></Link>)}</p>
                     </div>

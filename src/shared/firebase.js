@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {getAuth, GoogleAuthProvider, signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail ,signOut} from"firebase/auth"
 import {getFirestore, query, getDocs, collection, where, addDoc,setDoc,doc} from 'firebase/firestore'
 import { getAnalytics, } from "firebase/analytics";
+import { getStorage } from 'firebase/storage'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -41,13 +42,17 @@ const firebaseConfig = {
       
     }
   }
- const signUp = async (name,email, password) =>{
+ const signUp = async (firstName,lastName,email, password) =>{
   try {
     const res = await createUserWithEmailAndPassword(auth,email,password);
     const user = res.user;
-    await addDoc(usersCollection,{
-      name:name
-    })
+    await setDoc(doc(db,'users',user.uid) ,{
+      uid: user.uid,
+      firstname:firstName,
+      lastName: lastName,
+      email:email,
+      bookmark:[]
+    });
   }catch(err ){
     console.log(err);
   }
@@ -55,4 +60,5 @@ const firebaseConfig = {
   const logout = () => {
     signOut(auth);
   };
-  export {auth, logout,signInWithEmailAndPassword,signInWithgoogle,signUp }
+
+  export {auth, logout,signInWithEmailAndPassword,signInWithgoogle,signUp,db }

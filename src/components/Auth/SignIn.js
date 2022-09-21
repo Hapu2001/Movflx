@@ -2,10 +2,12 @@ import React,{useState, useEffect, useCallback} from 'react'
 import { FaFacebookF, } from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {auth,signInWithgoogle , signInWithEmailAndPassword} from '../../shared/firebase.js'
+import {auth , signInWithEmailAndPassword} from '../../shared/firebase.js'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 export default function SignIn(props) {
@@ -72,18 +74,17 @@ export default function SignIn(props) {
       }
     }
   } 
-  const myser=(...params) =>{
-    return params
-  }
-  console.log(myser(1,3,4));
+ 
   useEffect(()=>{
-      if(Object.keys(formErrors).length === 0)
-      {login()
-      }
-  
+    if(Object.keys(formErrors).length === 0)
+    {login()
     }
-  ,[formErrors,user])
+  }
+,[formErrors,user])
 
+
+
+ 
        
   return (
     <>
@@ -94,8 +95,8 @@ export default function SignIn(props) {
             <div className='flex justify-center my-5'>
               <p className='text-blue-900 px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FaFacebookF /></p>
               <p className='px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'
-                onClick={()=>{signInWithgoogle()}}
-              > <FcGoogle /></p> 
+               
+              > <FcGoogle /> </p> 
             </div>
             <p className='text-lg'>or use your account:</p>
           </div>

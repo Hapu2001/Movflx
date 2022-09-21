@@ -20,7 +20,7 @@ export default function SignUp(props) {
   const navigate = useNavigate()
   const register =()=>{
     if(Object.keys(formError).length === 0){
-      signUp(form.firstName, form.email, form.passwords)
+      signUp(form.firstName,form.lastName, form.email, form.passwords)
       if(user){
         toast.success('Sign Up Successfully')
         navigate('/')
