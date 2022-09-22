@@ -22,19 +22,18 @@ export default function Search() {
     console.log(e);
   }
   },[requestSearch,listSearch])
-  
+
+  console.log(listSearch);
 
   return (
-    <div className={`bg-home_bg02 mt-[112px] h-screen pt-10 pb-10`}>
+    <div className={`bg-home_bg02 mt-[82px] ${(listSearch.length >0 ) ? 'h-auto' :'h-screen'} pt-10 pb-10 lg:mt-[60px]`}>
       <Navbar />
       <div className='flex flex-wrap justify-center'>
           {listSearch.map((item)=>{
                 return (
                     <div className='mb-5 md:basis-1/2' key={item.id}>
-                            <CardFilm 
-                                
+                            <CardFilm  
                                 item={item}/>
-                              
                     </div>
                 )
             })}

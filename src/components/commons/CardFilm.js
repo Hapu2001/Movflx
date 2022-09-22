@@ -64,6 +64,24 @@ export default function CardFilm(props) {
         toast.info('Need login to use')
       }
     } 
+    const [listFilm,setListFilm] = useState([]);
+    const getFilm = async ()=>{
+      try {
+        const docRef = doc(db, 'users',user.uid);
+        const docSnap = await getDoc(docRef);
+        await setListFilm([...docSnap.data().bookmark])
+       
+      }
+      catch (err) {
+        console.error(err);
+      }
+    }
+ 
+    useEffect(()=>{
+      getFilm();
+      
+    },[listFilm])
+    console.log(listFilm);
 
   return (
     <div className='mr-11 w-56 relative card-container md:mx-auto'>
@@ -75,7 +93,7 @@ export default function CardFilm(props) {
                    onClick={()=>{handleAdd(item) 
               
                   }}
-                >{(bookmark.find(film=>film.id === item.id)) ? 'Film is available ' :'Add bookmark' }</p>
+                >{(listFilm.find(film=>film.id === item.id)) ? 'Film is available ' :'Add bookmark' }</p>
                 <Link to={`/${item.id}`}> <p className='btn px-0 mt-3 border-yellow-color opacity-0 text-white translate-y-1/2 transition-all duration-1000 card-btn'  
                 >Details</p></Link>
               </div>

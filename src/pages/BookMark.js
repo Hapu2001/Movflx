@@ -16,7 +16,7 @@ export default function BookMark() {
   const bookmark =  useSelector(state=>state.bookmark)
   const [user,loading,error] = useAuthState(auth);
   const [listFilm,setListFilm] = useState([]);
-  
+  let checkLength = (listFilm.length > 5) ? true : false;
  
   useEffect(()=>{
     const getFilm = async ()=>{
@@ -34,14 +34,15 @@ export default function BookMark() {
     if(!user){
       navigate('/')
     }
+   
     getFilm()
   },[listFilm,user])
 
   return (
-    <div className={`bg-home_bg02 mt-[112px] ${bookmark.length >5 ? 'h-auto' : 'h-screen'} pt-10 pb-10 lg:mt-[90px] sm:mt-[90px]`}>
-      <Navbar />
+    <div className={`bg-home_bg02  mt-[87px] ${ checkLength > 0 ? 'h-auto' : 'h-screen'}  pt-10 pb-10 lg:mt-[63px]  `}>
+      <Navbar /> 
       <div className=''>
-      <div className='flex flex-wrap justify-center'>
+      <div className='flex flex-wrap justify-center '>
 
         {listFilm.length === 0 ?  (
           <div className="text-white text-5xl pt-10">Movie list is currently not available

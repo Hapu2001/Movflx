@@ -19,13 +19,13 @@ export default function Banner() {
   return (
     <div className={'bg-banner bg-cover py-32 text-white z-10'}>
         <div className={'px-4 mx-20 relative md:mx-0'}>
-            <div className={'flex relative items-center flex-wrap-reverse'}>   
+            <div className={'flex relative items-center flex-wrap-reverse '}>   
                 <div   className={'basis-1/2 md:basis-full md:mt-5'}>
                         <p className='mb-2 font-bold text-3xl text-yellow-color'  data-aos="fade-up">Movflx</p>
-                        <h2 className='font-bold text-6xl mb-7 md:text-5xl '  data-aos="fade-up">Unlimited <span className='text-yellow-color'> Movie</span>, TV Shows, & More.</h2>
-                    <div className='mb-10 flex font-bold'  data-aos="fade-up">
+                        <h2 className='font-bold text-6xl mb-7 md:text-5xl'  data-aos="fade-up">Unlimited <span className='text-yellow-color'> Movie</span>, TV Shows, & More.</h2>
+                    <div className='mb-10 flex font-bold sm:flex-wrap'  data-aos="fade-up">
                         <p className='mr-4 mb-3'>
-                            <span className='bg-white text-black px-3 py-[6px] '>PG 18</span>
+                            <span className='bg-white text-black px-3 py-[6px]  '>PG 18</span>
                             <span className='bg-black-color  px-3 py-1 ml-2 border-2 text-white'>HD</span>
                         </p>
                         <p className='mr-4 mb-3'>

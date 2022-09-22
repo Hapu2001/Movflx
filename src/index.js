@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <HashRouter  >
-      <section className="font-poppins">
+      <section className="font-roboto">
       <App />
       <ToastContainer autoClose={1000}/>
       </section>

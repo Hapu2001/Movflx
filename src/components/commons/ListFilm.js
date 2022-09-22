@@ -58,7 +58,7 @@ export default function ListFilm() {
                 return false;
         }
   return (
-    <div className='bg-toprate_bg text-white pt-12'>
+    <div className='bg-toprate_bg text-white py-12'>
         <div className='mx-6'>
         
             <div className="flex sm:flex-wrap sm:justify-center">

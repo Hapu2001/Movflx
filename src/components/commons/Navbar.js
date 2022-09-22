@@ -1,4 +1,4 @@
-import React,{useState,useEffect, useCallback} from 'react'
+import React,{useState,useEffect, useCallback,useRef} from 'react'
 import logo from '../../assets/home/logo.png'
 import header_bottom from '../../assets/home/header_bottom_shape.png'
 import { faSearch,faBars, faAngleDown,faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -15,14 +15,11 @@ import { useSelector } from 'react-redux'
 
 export default function Navbar(props) {
 
-   
+    
+    const navMobileRef = useRef(null);
     const dispath = useDispatch();
     const searchRedux = useSelector(state =>state.search)
     const [search,setSearch] = useState(searchRedux)
-    const handleSearchRedux = ()=>{
-        dispath(searchSlice.actions.searchFilm(search))
-    }
-
     const [mobileMovie, setMobileMovie] = useState(false);
     const [mobileTvShow, setmobileTvShow] = useState(false);
     const [navMobile, setnavMobile] = useState(false);
@@ -31,10 +28,16 @@ export default function Navbar(props) {
     const location = useLocation() 
     const history = useNavigate();
     const [profile,setProfile]= useState(false);
-
     const [user,loading,error] = useAuthState(auth);
-    
-   
+
+    const handleResize = ()=>{
+        if(window.innerWidth > 1000 && navMobile === true){
+            setnavMobile(false);
+        }
+    }
+    const handleSearchRedux = ()=>{
+        dispath(searchSlice.actions.searchFilm(search))
+    }
     const handleScroll = () =>{
         const currentScrollPos = window.scrollY
         if(currentScrollPos <150){
@@ -74,6 +77,22 @@ export default function Navbar(props) {
         if (loading) return
        
     })
+    useEffect(()=>{
+        const handleClickOutNav =(event)=>{
+            if(navMobileRef.current && !navMobileRef.current.contains(event.target) ){
+                setnavMobile(false)
+            }
+          }
+          document.addEventListener("mousedown", handleClickOutNav);
+    
+          return () =>{
+            document.removeEventListener("mousedown", handleClickOutNav);
+          }
+    },[navMobileRef])
+    useEffect(()=>{
+        window.addEventListener('resize', handleResize)
+        return () =>window.removeEventListener('resize', handleResize)
+    })
 
     return (
         <div className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${visible ? 'top-0' :'-top-[112px]'}`}>
@@ -95,7 +114,7 @@ export default function Navbar(props) {
                     <div className={`flex  items-center  basis-2/3 relative`}>
                         <div className='relative'>
                             <form className='relative xl:hidden '>
-                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px]' type="text" placeholder="Find Favorite Movie" 
+                                <input className='bg-black-color pl-5 pr-16 py-3 rounded-[30px] focus:border-yellow-color focus:border-2 focus:outline-none' type="text" placeholder="Find Favorite Movie" 
                                 value={search}
                                 onChange={(e)=>{setSearch(e.target.value);}}
                                 ></input>
@@ -132,7 +151,7 @@ export default function Navbar(props) {
                     </div>
                 </div>
             </div>
-            <div  className={`fixed text-white z-40 top-0 right-0 w-[300px] h-[100vh] bg-[#171d22] overflow-x-hidden transition-all duration-1000 ${navMobile===true ? 'translate-x-0': 'translate-x-full'} `}>
+            <div ref={navMobileRef}  className={`fixed text-white z-40 top-0 right-0 w-[300px] h-[100vh] bg-[#171d22] overflow-x-hidden transition-all duration-1000 ${navMobile===true ? 'translate-x-0': 'translate-x-full'} `}>
                 <div>
                     <div className='px-6 py-8 flex justify-between items-center'>
                     <Link  to="/">   <img className='max-w-none' src={logo}></img> </Link>
