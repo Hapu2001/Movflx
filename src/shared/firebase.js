@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, GoogleAuthProvider, signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail ,signOut} from"firebase/auth"
+import {getAuth, GoogleAuthProvider,FacebookAuthProvider, signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail ,signOut} from"firebase/auth"
 import {getFirestore, query, getDocs, collection, where, addDoc,setDoc,doc} from 'firebase/firestore'
 import { getAnalytics, } from "firebase/analytics";
 import { getStorage } from 'firebase/storage'
@@ -22,28 +22,54 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
-  const googleAuthProvider = new GoogleAuthProvider();
+  const provider= new GoogleAuthProvider();
+  const providerFacebook = new FacebookAuthProvider();
   const usersCollection = collection(db,'users');
   const signInWithgoogle = async () =>{
     try {
-        const res = await signInWithgoogle(auth, googleAuthProvider);
+        const res = await  signInWithPopup(auth,provider)
         const user = res.user;
         const q = query(collection(db, 'users'), where("uid", '==', user.uid));
         const docs = await getDocs(q);
+        console.log(docs.data);
         if(docs.docs.length === 0 ){
-          await addDoc(collection(db, "users"), {
+          await setDoc(doc(db, "users",user.uid), {
             uid: user.uid,
             name: user.displayName,
             authProvider: "google",
             email: user.email,
+            bookmark:[]
+            
         });
     }}
     catch(err) {
-      
+      console.error(err);
+    }
+  }
+  const signInWithFacebook = async () =>{
+    try {
+        const res = await  signInWithPopup(auth, providerFacebook)
+        const user = res.user;
+        const q = query(collection(db, 'users'), where("uid", '==', user.uid));
+        const docs = await getDocs(q);
+        console.log(docs.data);
+        if(docs.docs.length === 0 ){
+          await setDoc(doc(db, "users",user.uid), {
+            uid: user.uid,
+            name: user.displayName,
+            authProvider: "google",
+            email: user.email,
+            bookmark:[]
+            
+        });
+    }}
+    catch(err) {
+      console.error(err);
     }
   }
  const signUp = async (firstName,lastName,email, password) =>{
   try {
+
     const res = await createUserWithEmailAndPassword(auth,email,password);
     const user = res.user;
     await setDoc(doc(db,'users',user.uid) ,{
@@ -57,8 +83,9 @@ const firebaseConfig = {
     console.log(err);
   }
  }
+ 
   const logout = () => {
     signOut(auth);
   };
 
-  export {auth, logout,signInWithEmailAndPassword,signInWithgoogle,signUp,db }
+  export {auth, logout,signInWithEmailAndPassword,signInWithgoogle,signUp,db,signInWithFacebook }

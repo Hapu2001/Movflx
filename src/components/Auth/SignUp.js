@@ -75,7 +75,7 @@ export default function SignUp(props) {
   },[])
   return (
     <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
-      <div className='w-[500px] mx-auto mt-10 text-center sm:w-[350px] '>
+      <div className='w-[500px] mx-auto mt-10 text-center  sm:max-w-[280px] sm:mt-2 '>
         <div>
           <p className='text-5xl'> <span className='text-yellow-color'>Create Account</span> </p> 
           <div className='flex justify-center my-5'>

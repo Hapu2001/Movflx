@@ -2,7 +2,7 @@ import React,{useState, useEffect, useCallback} from 'react'
 import { FaFacebookF, } from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {auth , signInWithEmailAndPassword} from '../../shared/firebase.js'
+import {auth , signInWithEmailAndPassword,signInWithgoogle,signInWithFacebook } from '../../shared/firebase.js'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -73,6 +73,10 @@ export default function SignIn(props) {
         history('/')
       }
     }
+   if(user){
+    toast.success('Login successful')
+        history('/')
+   }
   } 
  
   useEffect(()=>{
@@ -81,21 +85,19 @@ export default function SignIn(props) {
     }
   }
 ,[formErrors,user])
-
-
-
  
-       
   return (
     <>
-      <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt'>
-        <div className='w-[500px] mx-auto mt-20 text-center sm:w-[350px]'>
+      <div className='fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt '>
+        <div className='w-[500px] mx-auto mt-20 text-center sm:max-w-[280px] sm:mt-2'>
           <div>
             <p className='text-5xl'>Sign In To <span className='text-yellow-color'>Movflx</span> </p> 
             <div className='flex justify-center my-5'>
-              <p className='text-blue-900 px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'> <FaFacebookF /></p>
+              <p className='text-blue-900 px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'
+                  onClick={()=>{signInWithFacebook() }}
+              > <FaFacebookF /></p>
               <p className='px-3 py-3  bg-white border text-2xl rounded-full mx-1 hover:opacity-40'
-               
+               onClick={()=>{signInWithgoogle()}}
               > <FcGoogle /> </p> 
             </div>
             <p className='text-lg'>or use your account:</p>

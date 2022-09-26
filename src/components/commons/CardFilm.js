@@ -50,12 +50,12 @@ export default function CardFilm(props) {
           let checkFilm = docSnap.data().bookmark.some((item2)=>item2.id === item.id)
           if(checkFilm){
             toast.info('Film delete successfully')
-            dispath(usersSlice.actions.deleteBookmark(item))
+            
             deleteFilmStore(item)
           } 
           else{
             toast.success('Film added successfully')
-            dispath(usersSlice.actions.addBookmark(item))
+            
             addFilmFireStore(item)
           }
         } 
