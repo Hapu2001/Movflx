@@ -9,13 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDsl71eolwO7S5LK_BAF4eWg9fIa34j8VM",
-    authDomain: "movflx-reactjs.firebaseapp.com",
-    projectId: "movflx-reactjs",
-    storageBucket: "movflx-reactjs.appspot.com",
-    messagingSenderId: "398065077115",
-    appId: "1:398065077115:web:7ae5388632b25cba12cbde",
-    measurementId: "G-F8XK5PN7DH"
+  apiKey: "AIzaSyDsl71eolwO7S5LK_BAF4eWg9fIa34j8VM",
+  authDomain: "movflx-reactjs.firebaseapp.com",
+  databaseURL: "https://movflx-reactjs-default-rtdb.firebaseio.com",
+  projectId: "movflx-reactjs",
+  storageBucket: "movflx-reactjs.appspot.com",
+  messagingSenderId: "398065077115",
+  appId: "1:398065077115:web:7ae5388632b25cba12cbde",
+  measurementId: "G-F8XK5PN7DH"
   };
   
   // Initialize Firebase
