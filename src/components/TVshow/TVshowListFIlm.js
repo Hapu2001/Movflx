@@ -1,32 +1,14 @@
 import React, { useEffect, useState } from "react";
 import request from "../../shared/Requests";
 import axios from "axios";
-import CardFilm from "./CardFilm";
-import Filter from "./Filter";
-import { useSearchParams } from "react-router-dom";
-export default function ListFilm() {
-  const [search, setSearch] = useState({
-    genres: [],
-    from: [],
-    to: [],
-  });
-  const [searchParams, setSearchParams] = useSearchParams();
-  const handleFilerDate = (e) => {
-    if (e.target.name === "from") {
-      setSearch({ ...search, from: e.target.value });
-    } else {
-      setSearch({ ...search, to: e.target.value });
-    }
-  };
-
+import CardFilm from "../commons/CardFilm";
+import Filter from "../commons/Filter";
+export default function TVshowListFIlm() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortRate, setSortRate] = useState("popular");
-
-  const requestMoviePopular = `https://api.themoviedb.org/3/movie/${sortRate}?api_key=6cd3158a79f8308025968b023f2a09cf&language=en-US&page=${currentPage}`;
-  const requestDiscoverReleaseDate = `https://api.themoviedb.org/3/discover/movie?api_key=6cd3158a79f8308025968b023f2a09cf&page=1&release_date.gte=${search.from}&release_date.lte=${search.to}&with_genres=${search.genres}`;
+  const requestMoviePopular = `https://api.themoviedb.org/3/tv/${sortRate}?api_key=6cd3158a79f8308025968b023f2a09cf&language=en-US&page=${currentPage}`;
   const genresAPI = `https://api.themoviedb.org/3/genre/movie/list?api_key=6cd3158a79f8308025968b023f2a09cf&language=en-US`;
   const [popularTV, setPopularTV] = useState([]);
-  const [discoverMovie, setDiscoverMovie] = useState([]);
   const [genres, setGenres] = useState([]);
   const [idGenres, setIdGenres] = useState([]);
   useEffect(() => {
@@ -56,7 +38,6 @@ export default function ListFilm() {
       tam.push(genres);
     }
     setIdGenres(tam);
-    setSearch({ ...search, genres: tam });
   };
   const applyFilers = (film, idGenres) => {
     for (let i = 0; i < film.genre_ids.length; i++) {
@@ -68,43 +49,41 @@ export default function ListFilm() {
     }
     return false;
   };
-
   useEffect(() => {
-    window.scrollTo({ top: 500 });
-  }, [search]);
-  useEffect(() => {
-    axios.get(requestDiscoverReleaseDate).then((res) => {
-      setDiscoverMovie(res.data.results);
-      console.log(requestDiscoverReleaseDate);
-    });
-    setSearchParams({ ...search });
-  }, [search, requestDiscoverReleaseDate]);
-
+    window.scrollTo({ top: 300 });
+  }, [idGenres]);
   return (
     <div className="bg-toprate_bg text-white py-12">
       <div className="mx-6">
         <div className="flex sm:flex-wrap sm:justify-center">
           <div className="basis-1/6 sm:basis-full">
             <Filter
-              handleFilerDate={handleFilerDate}
               genres={genres}
               setIdGenres={setIdGenres}
               idGenres={idGenres}
               addGenres={addGenres}
               setSortRate={setSortRate}
-              setSearch={setSearch}
-              search={search}
             />
           </div>
           <div className=" basis-5/6  ">
             <div className="flex flex-wrap justify-center">
-              {discoverMovie.map((item) => {
-                return (
-                  <div className="mb-5" key={item.id}>
-                    <CardFilm item={item} />
-                  </div>
-                );
-              })}
+              {idGenres.length === 0
+                ? popularTV.map((item) => {
+                    return (
+                      <div className="mb-5" key={item.id}>
+                        <CardFilm item={item} />
+                      </div>
+                    );
+                  })
+                : popularTV.map((item) => {
+                    if (applyFilers(item, idGenres)) {
+                      return (
+                        <div className="mb-5" key={item.id}>
+                          <CardFilm item={item} />
+                        </div>
+                      );
+                    }
+                  })}
             </div>
             <div>
               {" "}
