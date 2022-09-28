@@ -70,9 +70,7 @@ export default function CardFilm(props) {
       const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
       await setListFilm([...docSnap.data().bookmark]);
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {

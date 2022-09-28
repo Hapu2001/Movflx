@@ -15,8 +15,8 @@ export default function Filter({
     value: "Popular",
   });
   const options = [
-    { value: "popular", label: "Most Popular" },
-    { value: "top_rated", label: "Most rating" },
+    { value: "popularity.desc", label: "Most Popular" },
+    { value: "vote_count.desc", label: "Most rating" },
   ];
   const customStyles = {
     option: (styles: any, { isSelected }: any) => ({
@@ -44,6 +44,7 @@ export default function Filter({
   const handleVaule = (options) => {
     setSortRate(options.value);
     setValue(options);
+    setSearch({ ...search, sortBy: options.value });
   };
   return (
     <div>

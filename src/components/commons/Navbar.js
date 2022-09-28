@@ -99,6 +99,7 @@ export default function Navbar(props) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   });
+  console.log(user);
   return (
     <div
       className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${
@@ -189,7 +190,9 @@ export default function Navbar(props) {
                         profile ? setProfile(false) : setProfile(true);
                       }
                     }}
-                  ></p>
+                  >
+                    <img className="rounded-full" src={user.photoURL}></img>
+                  </p>
                   <div className="w-[95px] h-[30px] absolute left-1/2 -translate-x-1/2 "></div>
                   <div
                     className={`bg-blue-darken absolute -left-1/2 -translate-x-1/2 mt-4 transition-all duration-500 overflow-hidden ${

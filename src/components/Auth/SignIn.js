@@ -18,17 +18,14 @@ export default function SignIn(props) {
       inputElement.focus();
     }
   }, []);
-
   const history = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-
   const [formErrors, setFormErrors] = useState({});
   const [user, loading, error] = useAuthState(auth);
   const [errorLogin, setErrorLogin] = useState({});
-
   const logInEmailandPassword = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -77,13 +74,11 @@ export default function SignIn(props) {
       history("/");
     }
   };
-
   useEffect(() => {
     if (Object.keys(formErrors).length === 0) {
       login();
     }
   }, [formErrors, user]);
-
   return (
     <>
       <div className="fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt ">
