@@ -14,6 +14,9 @@ module.exports = {
         roboto: ["Roboto", "sans-serif"],
         Roboto: "Roboto",
       },
+      boxShadow: {
+        footer: "0px 3px 0px 0px rgba(143,143,143,0.14)",
+      },
       backgroundImage: {
         banner: "url('/src/assets/home/s_slider_bg.jpg')",
         home_bg02: "url('/src/assets/home/ucm_bg02.jpg')",
@@ -21,6 +24,7 @@ module.exports = {
         gallery_bg: "url('/src/assets/home/gallery_bg.jpg')",
         toprate_bg: "url('/src/assets/home/tr_movies_bg.jpg')",
         movie_banner: "url('/src/assets/Movie/breadcrumb_bg.jpg')",
+        footer_bg: "url('/src/assets/home/footer_bg.jpg')",
       },
       screens: {
         "min-xl": "1030px",

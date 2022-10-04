@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../shared/firebase.js";
 import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import Footer from "../components/commons/Footer";
 
 export default function BookMark() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export default function BookMark() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Select from "react-select";
 export default function Filter({
   genres,
-  setIdGenres,
   idGenres,
   addGenres,
   setSortRate,
@@ -37,9 +36,6 @@ export default function Filter({
 
       backgroundColor: "#12151e",
     }),
-  };
-  const checkdate = (e) => {
-    console.log(e);
   };
   const handleVaule = (options) => {
     setSortRate(options.value);

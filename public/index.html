@@ -16,15 +16,28 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!-- ASO animation  -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-F8XK5PN7DH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-F8XK5PN7DH");
+    </script>
     <title>Movflx</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-   
 
-    <div id="root" style="-webkit-tap-highlight-color: transparent;"></div>
+    <div id="root" style="-webkit-tap-highlight-color: transparent"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -36,7 +49,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-   <!-- ASO animation  -->
+  <!-- ASO animation  -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();

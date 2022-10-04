@@ -6,6 +6,7 @@ import { useSearchParams, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
+import Footer from "../components/commons/Footer";
 export default function Search() {
   const searchRedux = useSelector((state) => state.search);
 
@@ -39,6 +40,7 @@ export default function Search() {
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 }

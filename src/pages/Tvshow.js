@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import BannerDetail from "../components/commons/BannerDetail";
+import Footer from "../components/commons/Footer";
 import Navbar from "../components/commons/Navbar";
 import Banner from "../components/Home/Banner";
 import TVshowListFIlm from "../components/TVshow/TVshowListFIlm";
@@ -21,6 +22,7 @@ export default function Tvshow() {
         </div>
       </div>
       <TVshowListFIlm />
+      <Footer />
     </div>
   );
 }

@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Rating } from "@mui/material";
 import AOS from "aos";
 import { useDispatch } from "react-redux";
-import { addBookmark, usersSlice } from "../../store/Slice/UserSlice";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { auth, db } from "../../shared/firebase.js";
 import {
   doc,
@@ -19,9 +18,6 @@ import {
 export default function CardFilm(props) {
   const [user, loading, error] = useAuthState(auth);
   const item = props.item;
-  const dispath = useDispatch();
-  const bookmark = useSelector((state) => state.bookmark);
-  const location = useLocation();
   const addFilmFireStore = async (film) => {
     try {
       const addBookmark = doc(db, "users", user.uid);

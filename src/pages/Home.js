@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from "react";
+import Footer from "../components/commons/Footer";
 import Navbar from "../components/commons/Navbar";
 import Banner from "../components/Home/Banner";
 import Gallery from "../components/Home/Gallery";
@@ -12,11 +13,9 @@ export default function Home() {
       <Navbar />
       <Banner />
       <Popular />
-
       <Gallery />
-      <Suspense fallback={<div>...Loading</div>}>
-        <TopRate />
-      </Suspense>
+      <TopRate />
+      <Footer />
     </div>
   );
 }

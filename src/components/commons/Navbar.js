@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/home/logo.png";
-import header_bottom from "../../assets/home/header_bottom_shape.png";
 import {
   faSearch,
   faBars,
@@ -8,15 +7,8 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { style, styled } from "@mui/system";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { auth, logout } from "../../shared/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
@@ -66,10 +58,6 @@ export default function Navbar(props) {
     }
     history(destinationUrl);
   };
-  const handleError = () => {
-    toast.info("Website under development");
-  };
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -90,7 +78,6 @@ export default function Navbar(props) {
       }
     };
     document.addEventListener("mousedown", handleClickOutNav);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutNav);
     };
@@ -99,7 +86,6 @@ export default function Navbar(props) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   });
-  console.log(user);
   return (
     <div
       className={`block bg-blue-darken navbar w-full z-20    transition-all duration-500 fixed ${
