@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Movflx/static/css/main.6e71ab6e.css",
-    "main.js": "/Movflx/static/js/main.3115b5aa.js",
+    "main.css": "/Movflx/static/css/main.f4a3d816.css",
+    "main.js": "/Movflx/static/js/main.539e962b.js",
     "static/js/601.ed70591a.chunk.js": "/Movflx/static/js/601.ed70591a.chunk.js",
     "static/css/984.dcd2d3d1.chunk.css": "/Movflx/static/css/984.dcd2d3d1.chunk.css",
     "static/js/984.2956def3.chunk.js": "/Movflx/static/js/984.2956def3.chunk.js",
@@ -26,8 +26,8 @@
     "static/media/slick.ttf": "/Movflx/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Movflx/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Movflx/index.html",
-    "main.6e71ab6e.css.map": "/Movflx/static/css/main.6e71ab6e.css.map",
-    "main.3115b5aa.js.map": "/Movflx/static/js/main.3115b5aa.js.map",
+    "main.f4a3d816.css.map": "/Movflx/static/css/main.f4a3d816.css.map",
+    "main.539e962b.js.map": "/Movflx/static/js/main.539e962b.js.map",
     "601.ed70591a.chunk.js.map": "/Movflx/static/js/601.ed70591a.chunk.js.map",
     "984.dcd2d3d1.chunk.css.map": "/Movflx/static/css/984.dcd2d3d1.chunk.css.map",
     "984.2956def3.chunk.js.map": "/Movflx/static/js/984.2956def3.chunk.js.map",
@@ -40,7 +40,7 @@
     "377.e762cd1a.chunk.js.map": "/Movflx/static/js/377.e762cd1a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e71ab6e.css",
-    "static/js/main.3115b5aa.js"
+    "static/css/main.f4a3d816.css",
+    "static/js/main.539e962b.js"
   ]
 }
