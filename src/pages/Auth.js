@@ -1,23 +1,18 @@
-import React,{useState} from 'react'
-import SignIn from '../components/Auth/SignIn'
-import video from '../assets/Video/trailer.mp4'
-import SignUp from '../components/Auth/SignUp'
-
+import React, { useState } from "react";
+import SignIn from "../components/Auth/SignIn";
+import video from "../assets/Video/trailer.mp4";
+import SignUp from "../components/Auth/SignUp";
 
 export default function Auth() {
-  const [show,setShow] = useState(true)
+  const [show, setShow] = useState(true);
   return (
-    <div className="text-white">
-        <div className="fixed h-full w-full bg-black z-[2] opacity-90">
-        </div>
-         <video className="w-full fixed lg:hidden"  muted
-                autoPlay
-                 loop>
-            <source  src={video} type="video/mp4" />
-        </video>
+    <div className="text-white h-[100vh]">
+      <div className="fixed h-full w-full bg-black z-[2] opacity-90"></div>
+      <video className="w-full fixed lg:hidden" muted autoPlay loop>
+        <source src={video} type="video/mp4" />
+      </video>
 
-        {show ? (<SignIn setShow={setShow} />) : 
-        (<SignUp setShow={setShow} />)}
+      {show ? <SignIn setShow={setShow} /> : <SignUp setShow={setShow} />}
     </div>
-  )
+  );
 }

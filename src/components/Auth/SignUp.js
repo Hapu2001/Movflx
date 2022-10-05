@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { BsArrowLeft } from "react-icons/bs";
 import { auth, signUp } from "../../shared/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -81,7 +82,7 @@ export default function SignUp(props) {
     }
   }, []);
   return (
-    <div className="fixed z-[3] left-1/2 -translate-x-1/2 w-full px-6 pt">
+    <div className="fixed z-[3] left-1/2 -translate-x-1/2 w-full px-3 pt">
       <div className="w-[500px] mx-auto mt-10 text-center  sm:max-w-[280px] sm:mt-2 ">
         <div>
           <p className="text-5xl">
@@ -102,8 +103,8 @@ export default function SignUp(props) {
         </div>
         <div>
           <form onSubmit={onSubmitForm}>
-            <div className="my-5 flex justify-between sm:flex-wrap">
-              <p className="sm:basis-full">
+            <div className="my-5 flex justify-between sm:flex-wrap items-center">
+              <p className="sm:basis-1/2">
                 <input
                   className="bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full"
                   placeholdertype="text"
@@ -114,8 +115,7 @@ export default function SignUp(props) {
                 ></input>
                 <p>{formError.firstName}</p>
               </p>
-              <p className="sm:basis-full sm:mt-5">
-                {" "}
+              <p className="sm:basis-1/2">
                 <input
                   className="bg-white text-black  border-2  px-5 py-4 border-solid rounded-md focus:border-yellow-color focus:border-2 focus:outline-none w-full"
                   placeholder="Last name"
@@ -162,14 +162,26 @@ export default function SignUp(props) {
             </div>
           </form>
         </div>
-        <div className="flex justify-center text-lg">
-          <p>Already a member? </p>
+        <div className="flex justify-between text-lg lg:flex-col-reverse ">
           <p
-            className="hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline"
-            onClick={() => props.setShow(true)}
+            className="flex justify-center items-center hover:text-yellow-color cursor-pointer  "
+            onClick={() => {
+              navigate("/");
+            }}
           >
-            Sign In
+            <BsArrowLeft /> Back home
           </p>
+          <div className="flex justify-center">
+            <p>Already a member? </p>
+            <p
+              className="hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline"
+              onClick={() => {
+                props.setShow(true);
+              }}
+            >
+              Sign In
+            </p>
+          </div>
         </div>
       </div>
     </div>

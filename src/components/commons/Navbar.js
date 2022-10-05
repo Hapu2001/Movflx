@@ -280,7 +280,7 @@ export default function Navbar(props) {
             </p>
 
             <p className="flex px-7 py-3 border-t-[1px] border-[#ffffff1a]">
-              <Link to="/movies">
+              <Link to="/tvshow">
                 {" "}
                 <p className="mr-32">Tv Show</p>
               </Link>

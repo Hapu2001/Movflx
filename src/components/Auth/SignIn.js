@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import {
   auth,
   signInWithEmailAndPassword,
@@ -139,16 +140,26 @@ export default function SignIn(props) {
               </div>
             </form>
           </div>
-          <div className="flex justify-center text-lg">
-            <p>Not a member? </p>
+          <div className="flex justify-between text-lg lg:flex-col-reverse ">
             <p
-              className="hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline"
+              className="flex justify-center items-center hover:text-yellow-color cursor-pointer  "
               onClick={() => {
-                props.setShow(false);
+                history("/");
               }}
             >
-              Sign Up
+              <BsArrowLeft /> Back home
             </p>
+            <div className="flex justify-center">
+              <p>Not a member? </p>
+              <p
+                className="hover:cursor-pointer ml-3 text-yellow-color underline-offset-2 underline"
+                onClick={() => {
+                  props.setShow(false);
+                }}
+              >
+                Sign Up
+              </p>
+            </div>
           </div>
         </div>
       </div>
